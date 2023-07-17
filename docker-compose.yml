@@ -1,0 +1,11 @@
+services:
+  casestudy:
+    build: .
+    volumes:
+      - ".:/case-study"
+    command: simprov --state-file /case-study/study-state.pickle /case-study/patterns.yaml /case-study/rules.py
+    network_mode: "host"
+  web:
+    image: andreasruscheinski/simprovweb
+    network_mode: "host"
+    command: "npm run start"
