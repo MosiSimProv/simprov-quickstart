@@ -4,8 +4,10 @@ services:
     volumes:
       - ".:/case-study"
     command: simprov --state-file /case-study/study-state.pickle /case-study/patterns.yaml /case-study/rules.py
-    network_mode: "host"
-  web:
-    image: andreasruscheinski/simprovweb
-    network_mode: "host"
-    command: "npm run start"
+    ports:
+        - "5000:5000"
+  #web:
+  #  image: andreasruscheinski/simprovweb
+  #  ports:
+  #      - "1234:1234"
+  #  command: "npm run start"
