@@ -1,0 +1,179 @@
+Assumption:
+  attributes:
+    - File Path$
+    - Content
+  style:
+    background-color: "#c59ee2"
+    border-width: 2
+    border-style: "solid"
+    border-color: "#7031a0"
+
+
+Reference:
+  attributes:
+    - File Path$
+    - Content
+  style:
+    background-color: "#e9ddaf"
+    border-width: 2
+    border-style: "solid"
+    border-color: "#ddcb86"
+
+Requirement:
+  attributes:
+    - File Path$
+    - Content
+  style:
+    background-color: "#c5e0b4"
+    border-width: 2
+    border-style: "solid"
+    border-color: "#a9d18e"
+
+Research Question:
+  attributes:
+    - File Path$
+    - Content
+  style:
+    background-color: "#ff6a6a"
+    border-width: 2
+    border-style: "solid"
+    border-color: "#ff0101"
+
+Simulation Model:
+  attributes:
+    - File Path$
+    - Content
+  style:
+    background-color: "#bdd7ee"
+    border-width: 2
+    border-style: "solid"
+    border-color: "#2f75b6"
+
+Simulation Experiment:
+  attributes:
+    - File Path$
+    - Content
+  style:
+    background-color: "#f4b183"
+    border-width: 2
+    border-style: "solid"
+    border-color: "#cc6823"
+
+Simulation Data:
+  attributes:
+    - File Path$
+  style:
+    background-color: "#ffd967"
+    border-width: 2
+    border-style: "solid"
+    border-color: "#f4b183"
+
+
+Analysis Result:
+  attributes:
+    - File Path$
+    - Content
+
+Script:
+  attributes:
+    - Hash$
+    - File Path
+    - Content
+  style:
+    background-color: "#9fffa5"
+    border-width: 2
+    border-style: "solid"
+    border-color: "#06df14"
+
+Visualization:
+  attributes:
+    - File Path$
+    - Content
+  style:
+    background-color: "#9ffdff"
+    border-width: 2
+    border-style: "solid"
+    border-color: "#06abdf"
+
+Specifying Assumption:
+  usage:
+    - Reference*
+    - Assumption?
+  generation:
+    - Assumption
+
+
+Specifying Requirement:
+  usage:
+    - Reference*
+    - Requirement?
+  generation:
+    - Requirement
+
+
+Specifying Research Question:
+  usage:
+    - Reference*
+    - Research Question?
+  generation:
+    - Research Question
+
+
+Specifying Reference:
+  usage:
+    - Reference?
+  generation:
+    - Reference
+
+Specifying Simulation Model:
+  usage:
+    - Simulation Model*
+    - Assumption*
+    - Requirement*
+    - Research Question?
+  generation:
+    - Simulation Model
+
+
+Specifying Simulation Experiment:
+  usage:
+    - Requirement*
+    - Assumption*
+    - Simulation Model
+    - Simulation Experiment?
+  generation:
+    - Simulation Experiment
+
+
+Executing Simulation Experiment:
+  usage:
+    - Simulation Experiment
+  generation:
+    - Simulation Data*
+  association:
+    - Python
+    - Simulator    
+
+
+Analyzing Simulation Data:
+  usage:
+    - Simulation Data+
+    - Requirement*
+    - Analysis Result*
+    - Assumption*
+    - Script
+  generation:
+    - Visualization?
+    - Analysis Result?
+  association:
+    - Python 
+
+Simulator:
+    attributes:
+        - Formalism$
+        - Version$
+
+Python:
+    attributes:
+        - Version$
+        - Packages!
